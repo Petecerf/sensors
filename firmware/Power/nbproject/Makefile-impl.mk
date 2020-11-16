@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=iwast01.X
+PROJECTNAME=Power
 
 # Active Configuration
 DEFAULTCONF=soundlevel
