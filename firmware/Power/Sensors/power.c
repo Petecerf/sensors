@@ -10,7 +10,8 @@
 #warning "Compiling for Power sensor"
 
 #define SOL_VOLT   0x13
-#define BAT_VOLT   0x14
+#define BAT_VOLT   0x14 //Channel ANC4 -> RC4
+#define VOLT_REF   0x83 //Voltage Reference for ADC -> 4.096 V
 
 void measureVolt(void);
 void initializePowerModule(void);
@@ -34,8 +35,8 @@ uint8_t batteryundervoltage = 0;
 
 
 void Power_Init(){
-    // Enable Fixed voltage reference with voltage of 2.048 V
-    FVRCON = 0x82;
+    // Enable Fixed voltage reference
+    FVRCON = VOLT_REF;
     // set the ADCC to the options selected in the User Interface
     // ADLTH 0; 
     ADLTHL = 0x00;
@@ -77,8 +78,8 @@ void Power_Init(){
     ADREF = 0x03;
     // ADACT disabled; 
     ADACT = 0x00;
-    // ADCS FOSC/2; 
-    ADCLK = 0x00;
+    // ADCS FOSC/16; 
+    ADCLK = 0x07;
     // ADGO stop; ADFM right; ADON enabled; ADCS FOSC/ADCLK; ADCONT disabled; 
     ADCON0 = 0x84;
     
@@ -113,7 +114,7 @@ void Power_Measure(){
 
 
 void Power_Loop(){
-    FVRCON = 0x82;                                          // Enable Fixed voltage reference
+    FVRCON = VOLT_REF;                                          // Enable Fixed voltage reference
     //startMeasurement = true;
     if(startMeasurement && !measurementRunning){
         startMeasurement = false;
@@ -136,12 +137,12 @@ void Power_Loop(){
         if(tempValue < solvoltage){                         // To make sure it is the lowest/ stable voltage that is captured
             solvoltage = tempValue;
         }
-        floatsolvoltage = ((float)solvoltage /4096) * 2 * 2.048;
+        floatsolvoltage = ((float)solvoltage /4096) * 2 * 4.096;
         
         
         ADCC_GetSingleConversion(BAT_VOLT); 
         batvoltage = ADCC_GetSingleConversion(BAT_VOLT);
-        floatbatvoltage = ((float)batvoltage /4096) * 2 * 2.048;
+        floatbatvoltage = ((float)batvoltage /4096) * 2 * 4.096;
         
         
         SOL_MEAS_EN_SetLow();                               // Disable loadswitch to measure voltage

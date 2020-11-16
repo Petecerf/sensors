@@ -150,24 +150,24 @@
 
 
 // get/set INT aliases
-#define READY_TRIS                          TRISAbits.TRISC7
-#define READY_LAT                           LATAbits.LATC7
-#define READY_PORT                          PORTAbits.RC7
-#define READY_WPU                           WPUAbits.WPUC7
-#define READY_OD                            ODCONAbits.ODCC7
-#define READY_ANS                           ANSELAbits.ANSC7
-#define READY_SetHigh()                     do { LATAbits.LATC7 = 1; } while(0)
-#define READY_SetLow()                      do { LATAbits.LATC7 = 0; } while(0)
-#define READY_Toggle()                      do { LATAbits.LATC7 = ~LATAbits.LATC7; } while(0)
-#define READY_GetValue()                    PORTAbits.RC7
-#define READY_SetDigitalInput()             do { TRISAbits.TRISC7 = 1; } while(0)
-#define READY_SetDigitalOutput()            do { TRISAbits.TRISC7 = 0; } while(0)
-#define READY_SetPullup()                   do { WPUAbits.WPUC7 = 1; } while(0)
-#define READY_ResetPullup()                 do { WPUAbits.WPUC7 = 0; } while(0)
-#define READY_SetPushPull()                 do { ODCONAbits.ODCC7 = 0; } while(0)
-#define READY_SetOpenDrain()                do { ODCONAbits.ODCC7 = 1; } while(0)
-#define READY_SetAnalogMode()               do { ANSELAbits.ANSC7 = 1; } while(0)
-#define READY_SetDigitalMode()              do { ANSELAbits.ANSC7 = 0; } while(0)
+#define READY_TRIS                          TRISCbits.TRISC7
+#define READY_LAT                           LATCbits.LATC7
+#define READY_PORT                          PORTCbits.RC7
+#define READY_WPU                           WPUCbits.WPUC7
+#define READY_OD                            ODCONCbits.ODCC7
+#define READY_ANS                           ANSELCbits.ANSC7
+#define READY_SetHigh()                     do { LATCbits.LATC7 = 1; } while(0)
+#define READY_SetLow()                      do { LATCbits.LATC7 = 0; } while(0)
+#define READY_Toggle()                      do { LATCbits.LATC7 = ~LATCbits.LATC7; } while(0)
+#define READY_GetValue()                    PORTCbits.RC7
+#define READY_SetDigitalInput()             do { TRISCbits.TRISC7 = 1; } while(0)
+#define READY_SetDigitalOutput()            do { TRISCbits.TRISC7 = 0; } while(0)
+#define READY_SetPullup()                   do { WPUCbits.WPUC7 = 1; } while(0)
+#define READY_ResetPullup()                 do { WPUCbits.WPUC7 = 0; } while(0)
+#define READY_SetPushPull()                 do { ODCONCbits.ODCC7 = 0; } while(0)
+#define READY_SetOpenDrain()                do { ODCONCbits.ODCC7 = 1; } while(0)
+#define READY_SetAnalogMode()               do { ANSELCbits.ANSC7 = 1; } while(0)
+#define READY_SetDigitalMode()              do { ANSELCbits.ANSC7 = 0; } while(0)
 
 
 #define SENSOR_API { \

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/soundlevel/production\Power.production.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>16384</length>
+      <used>2458</used>
+      <free>13926</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>2048</length>
+      <used>226</used>
+      <free>1822</free>
+    </memory>
+  </executable>
+</project>
